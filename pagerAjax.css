@@ -1,0 +1,19 @@
+.pagerAjax-result {
+    margin: 40px 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.pagerAjax-more {
+    height: 40px;
+    background-color: #ccc;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &.loading {
+        color: rgba(0, 0, 0, 0);
+        background-image: url(https://samherbert.net/svg-loaders/svg-loaders/three-dots.svg);
+        background-size: 50%;
+    }
+}
