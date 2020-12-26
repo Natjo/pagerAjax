@@ -14,8 +14,8 @@
     const url = paramsData.wp_ajax_url;
     const namespace = params.namespace || 'pagerAjax';
     const result = document.querySelector(`.${namespace}-result`);
-    let page = 1;
-    let items_per_page = result.dataset.itemsPerPage || 8;
+    let page = result.dataset.itemsPerPage || 2;
+	let items_per_page = result.dataset.itemsPerPage || 4;
     const btn_more = document.querySelector(`.${namespace}-more`);
     const tpl = document.getElementById(`${namespace}-tpl`).innerHTML;
     const loading = () => {

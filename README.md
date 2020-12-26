@@ -4,53 +4,56 @@
 ![version](https://img.shields.io/github/manifest-json/v/Natjo/pagerAjax)
 
 Ajax pager with template item.  
-Set number of items per page: data-items-per-page
-Need this 2 elements:  
-- `namespace`-result - element wher items will be displayed
-- `namespace`-more - add items until max_page
 
 
-## result
+## Result list
+List where items will be added when clicking `pagerAjax-more` button.  
+- `data-items-per-page` is the number of items to add - *default is 4*
+- `data-current-page` is depending of items per page - *default is 2 that means 8 items on DOM*.
+
 ```html
-	<ul class="pagerAjax-result" data-action="myAction" data-nonce="mynonce" data-items-per-page="4">
-		<li class="card">
-			<a href="/">
-				<div class="tag">tag</div>
-				<h1>Title</h1>
-				<div class="desc">
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis, unde!
-				</div>
-			</a>
-		</li>
-		<li class="card">
-			<a href="/">
-				<div class="tag">tag</div>
-				<h1>Title 2</h1>
-				<div class="desc">
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis, unde!
-				</div>
-			</a>
-		</li>
-		<li class="card">
-			<a href="/">
-				<div class="tag">tag</div>
-				<h1>Title 3</h1>
-				<div class="desc">Lorem ipsum, dolor .</div>
-			</a>
-		</li>
-		<li class="card">
-			<a href="/">
-				<div class="tag">tag</div>
-				<h1>Title 4</h1>
-				<div class="desc">Lorem ipsum, dolor .</div>
-			</a>
-		</li>
+<ul class="pagerAjax-result" 
+	data-action="myAction" data-nonce="mynonce" 
+	data-current-page="1" data-items-per-page="4">
+	<li class="card">
+		<a href="/">
+			<div class="tag">tag</div>
+			<h1>Title</h1>
+			<div class="desc">
+				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis, unde!
+			</div>
+		</a>
+	</li>
+	<li class="card">
+		<a href="/">
+			<div class="tag">tag</div>
+			<h1>Title 2</h1>
+			<div class="desc">
+				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis, unde!
+			</div>
+		</a>
+	</li>
+	<li class="card">
+		<a href="/">
+			<div class="tag">tag</div>
+			<h1>Title 3</h1>
+			<div class="desc">Lorem ipsum, dolor .</div>
+		</a>
+	</li>
+	<li class="card">
+		<a href="/">
+			<div class="tag">tag</div>
+			<h1>Title 4</h1>
+			<div class="desc">Lorem ipsum, dolor .</div>
+		</a>
+	</li>
 </ul>
-<button class="filterAjax-more">More result</button>
+
+<button class="pagerAjax-more">More result</button>
 ```
-## template
+## Template
 ```html
-<template id="tpl-card">
+<template id="pagerAjax-tpl">
 	<li class="card">
 		<a href="${data.url}">
 			<div class="tag">${data.tag}</div>
@@ -61,7 +64,7 @@ Need this 2 elements:
 </template>
 ```
 
-## javscript
+## Javascript
 ```javascript
 const myPager = new PagerAjax({
     //namespace: 'pagerAjax',
@@ -79,7 +82,7 @@ function myAction_callback()
 	$response['page'] = 1;
 	$response['max_page'] = 2;
 	$response['msg'] = __('No result', 'lsd_lang');
-	$response['msg'] = array(
+	$response['datas'] = array(
 		array(
 			"tag" => "amet",
 			"title" => "Lorem ipsum",
